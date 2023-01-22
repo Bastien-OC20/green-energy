@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light p-3 fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg  p-3 fixed-top" id="mainNav">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="./assets/logo.png" alt="Green_E Logo" id="logoImg" />
+        <img src="./assets/logo-bw.png" alt="Green_E Logo" id="logoImg" />
       </a>
       <button
         class="navbar-toggler"
