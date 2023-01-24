@@ -1,5 +1,6 @@
 <template>
   <article class="home_intro ">
+    <h2 class="home_intro_title ">Envie de changer d'energie ?</h2>
       <p class="home_intro_paragraph">
         L'utilisation de sources d'énergie renouvelables telles que :
         <ul class="home_intro_paragraph_list1">
@@ -160,48 +161,19 @@ export default {
 @import "../../assets/sass/main.scss";
 
 .home {
+  
   &_intro {
+    margin-top:20em;
+    &_title{
+      display:flex;
+      justify-content: center;
+    }
     &_paragraph {
-      &_list1::after {
-        content: "";
-        background-image: linear-gradient(
-          to right,
-          rgba(1, 81, 255, 0.5),
-          rgba(251, 255, 1, 0.5)
-        );
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        position: absolute;
-        bottom: 50%;
-        left: 40%;
-        z-index: -1;
-      }
-      &_list1::before {
-        content: "";
-        background-image: linear-gradient(
-          to top,
-          rgba(1, 81, 255, 0.5),
-          rgba(11, 128, 0, 0.5)
-        );
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        position: absolute;
-        top: 40%;
-        right: 30%;
-        z-index: -1;
-      }
+      
       &_list1 {
-        background-image: linear-gradient(
-          to bottom,
-          rgba(251, 255, 1, 0.5),
-          rgba(11, 128, 0, 0.5)
-        );
-        background-size: 550px 400px;
-        border-radius: 50%;
+        border-radius: 15%;
         border: 0.5px solid rgba(78, 78, 78, 0.493);
-        background-repeat: no-repeat;
+       
         position: relative;
         z-index: 0;
         text-decoration: none;
