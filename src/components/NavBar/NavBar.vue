@@ -77,7 +77,7 @@
             </g>
           </svg>
         </router-link>
-        <h1>Green-E !</h1>
+        <h1 class="navBar-title">Green-E !</h1>
       </div>
       <button
         class="navbar-toggler bg-white"
@@ -178,6 +178,11 @@ export default {
     display: flex;
     justify-content: flex-end;
     .logo-brand {
+      .navBar-title {
+        display: flex;
+        justify-content: center;
+        color: white;
+      }
       #logoImg,
       .st0 {
         width: 15em;

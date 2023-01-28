@@ -2,33 +2,29 @@
   <article class="home_intro ">
     <h2 class="home_intro_title ">Envie de changer d'energie ?</h2>
       <p class="home_intro_paragraph">
-        L'utilisation de sources d'énergie renouvelables telles que :
-        <ul class="home_intro_paragraph_list1">
-          <li class="home_intro_paragraph_list1_energy1">
+        L'utilisation de sources d'énergie renouvelables telles que :</p>
+        <div class="home_intro_paragraph_list1">
             <img
               :key="eolienne"
-              class="img-fluid home_intro_paragraph_list1_energy1_pictureEolienne"
+              class="home_intro_paragraph_list1_pictureEolienne"
               :src="eolienne"
+              title="l'éolien"
+               aria-label="Image d'une éolienne "
             >
-          </li>
-          <li class="home_intro_paragraph_list1_energy2">
+            <span class="home_intro_paragraph_list1_title">l'éolien</span>
             <img
               :key="panneau"
-              class="img-fluid home_intro_paragraph_list1_energy2_picturePanneau"
+              class="home_intro_paragraph_list1_picturePanneau"
               :src="panneau"
+              content= "le solaire"
+              title="le solaire"
+              aria-label="Image de panneaux solaires sur un toit "
             >
-          </li>
-          <li class="home_intro_paragraph_list1_transition">
-            ET
-          </li>
-          <li class="home_intro_paragraph_list1_energy3">
-            <img
-              :key="hydro"
-              class="img-fluid home_intro_paragraph_list1_energy3_pictureHydro"
-              :src="hydro"
-            >
-          </li>
-        </ul>permet de réduire notre dépendance aux combustibles fossiles tels que le <span
+           <span class="home_intro_paragraph_list1_title">le solaire</span>
+          </div>
+          <p class="home_intro_paragraph">
+        permet de réduire notre dépendance aux combustibles fossiles tels que le 
+        <span
           class="badge text-bg-danger"
         >pétrole</span> et le <span
           class="badge text-bg-danger"
@@ -41,24 +37,35 @@
           :key="gas"
           class="img-fluid home_intro_paragraph_fossile_pictureFossile"
           :src="gas"
+          title="Le gaz"
+          aria-label="Image de citernes de gaz "
         >
-        <span class="home_intro_paragraph_fossile_plus">+</span>
+        <span class="home_intro_paragraph_fossile_plus" title="plus" arial-label="s'ajoute">+</span>
         <img
           :key="charbon"
           class="img-fluid home_intro_paragraph_fossile_pictureFossile"
           :src="charbon"
+          title="Le charbon"
+          aria-label="Image de centrale à charbon "
         >
-        <span class="home_intro_paragraph_fossile_plus">+</span>
+        <span class="home_intro_paragraph_fossile_plus"
+        title="plus" arial-label="s'ajoute">+</span>
         <img
           :key="petrol"
           class="img-fluid home_intro_paragraph_fossile_pictureFossile"
           :src="petrol"
+          title="Le pétrol"
+          aria-label="Image de pompe à pétrol "
         >
-        <span class="home_intro_paragraph_fossile_egal">=</span>
+        <span class="home_intro_paragraph_fossile_egal"
+        title="égal" arial-label="produit">=</span>
         <img
           :key="redStorm"
           class="img-fluid home_intro_paragraph_fossile_pictureFossile redStorm"
           :src="redStorm"
+          title="Énergie polluante"
+          aria-label="une éclaire rouge symbolysant la production d'énergie polluante "
+          
         >
       </div>
       <p class="home_intro_paragraph">
@@ -82,24 +89,35 @@
           :key="solaire"
           class="img-fluid home_intro_paragraph_green_picturegreen"
           :src="solaire"
+          title="Le solaire"
+          aria-label="Image de panneaux solaires récupérant l'énergie du soleil "
         >
-        <span class="home_intro_paragraph_green_plus">+</span>
+        <span class="home_intro_paragraph_green_plus"
+        title="plus"
+          aria-label="s'ajoute ">+</span>
         <img
           :key="eolien"
           class="img-fluid home_intro_paragraph_green_picturegreen"
           :src="eolien"
+          title="L'éolien'"
+          aria-label="Image d'éoliennes' "
         >
-        <span class="home_intro_paragraph_green_plus">+</span>
+        <span class="home_intro_paragraph_green_plus" title="plus"
+          aria-label="s'ajoute ">+</span>
         <img
           :key="eau"
           class="img-fluid home_intro_paragraph_green_picturegreen"
           :src="eau"
+          title="L'hydro-éléctrique'"
+          aria-label="Image d'un barrage hydro-éléctrique' "
         >
         <span class="home_intro_paragraph_green_egal">=</span>
         <img
           :key="blueStorm"
           class="img-fluid home_intro_paragraph_green_picturegreen blueStorm"
           :src="blueStorm"
+          title="Énergie renouvellable"
+          aria-label="une éclaire rouge symbolysant la production d'énergie renouvellable "
         >
       </div>
       <p class="home_intro_paragraph">
@@ -137,8 +155,8 @@
 
 <script>
 export default {
-     name: "IntroHomeView",
-     data() {
+  name: "IntroHomeView",
+  data() {
     return {
       panneau: require("@/assets/img/panneau.jpg"),
       eolienne: require("@/assets/img/eolienne.jpg"),
@@ -153,79 +171,42 @@ export default {
       blueStorm: require("@/assets/webp/blueStorm.webp"),
     };
   },
-
-}
+};
 </script>
 
 <style lang="scss">
 @import "../../assets/sass/main.scss";
 
 .home {
-  
   &_intro {
-    margin-top:20em;
-    &_title{
-      display:flex;
-      justify-content: center;
+    &_title {
+      font-weight: bolder;
     }
     &_paragraph {
-      
       &_list1 {
-        border-radius: 15%;
-        border: 0.5px solid rgba(78, 78, 78, 0.493);
-       
-        position: relative;
-        z-index: 0;
-        text-decoration: none;
-        list-style: none;
+        background: $colorCadre2;
         box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-
-        &_energy1 {
-          &_pictureEolienne {
-            width: 90%;
-            border-radius: 25px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          }
+        &_title{
+          width: 15%;
+          display: flex;
+          position: absolute;
+          justify-content: center;
+          background: white;
+          border-radius: 35px;
+          top: 30em;
+          left:18em;
         }
-
-        &_energy1::after {
-          content: " l'éolien  ";
-          color: black;
-          font-size: 20px;
-          background-color: #fff;
+        &_title:nth-child(2){
+          top: 32em;
+          left:8em;
         }
-
-        &_energy2 {
-          &_picturePanneau {
-            border-radius: 45px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          }
+        &_pictureEolienne,
+        &_picturePanneau {
+          width: 60%;
+          border-radius: 35px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
-
-        &_energy2::after {
-          content: " le solaire ";
-          color: black;
-          font-size: 20px;
-          background-color: #fff;
-        }
-        &_transition {
-          font-size: 2em;
-          font-weight: 600;
-        }
-
-        &_energy3 {
-          &_pictureHydro {
-            border-radius: 35px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          }
-        }
-
-        &_energy3::after {
-          content: " l'hydro-Électricité";
-          color: black;
-          font-size: 20px;
-          background-color: #fff;
-        }
+        
       }
       &_fossile,
       &_green {
@@ -234,15 +215,12 @@ export default {
         position: relative;
         border-radius: 15px;
         padding: 0.1em;
-        margin: 0em 0.5em 0em 0.5em;
+
         box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
         -webkit-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
         -moz-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
 
-        &_egal,
-        &_plus {
-          font-size: 4em;
-        }
+
       }
       &_fossile::before,
       &_green::before {
@@ -264,4 +242,6 @@ export default {
     }
   }
 }
+
+
 </style>

@@ -10,22 +10,22 @@
       /></em>
     </div>
     <article v-if="!idVille" class="widget__form">
-      <form @submit="ajouter">
+      <form>
         <div class="widget__form-group">
           <input
-            id="city"
+            id="city "
             v-model="cityName"
-            class="widget__form-group__field"
+            class="widget__form-group__field "
             type="text"
             required="required"
             aria-describedby="Nom de votre ville"
             placeholder="Entrez votre ville"
             @input="validateCity"
-            :class="{ error: invalidCity }"
+            :class="{ 'is-invalid': error }"
           />
           <label for="name" class="widget__form-group__label">Nom de ville</label>
           <div class="widget__form-group__frame">
-            <button class="custom-btn btn-5" type="submit" @click="ajouter">
+            <button class="custom-btn btn-5" type="submit" @click="GetWeatherData()">
               Ajouter
             </button>
           </div>
@@ -100,7 +100,7 @@
         />
       </div>
     </article>
-    <article v-if="invalidCity" class="error-message">
+    <article v-if="error" class="invalid-feedback">
       <h4>Hélas ! La ville est introuvable !</h4>
       <p>Le nom de la ville n'est pas valide ! Pensez à vérifier son orthographe</p>
       <p> 
@@ -116,6 +116,7 @@
 <script>
 // Modules ....................................
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 //Components ..............................................
 //import TemperatureCard from "./MeteoCard/TemperatureCard.vue";
@@ -134,10 +135,9 @@ export default {
   props: {},
   data() {
     return {
-      showModal: "false",
-      invalidCity: false,
-      cityRegex: /^(?=.{3,50}$)[a-zA-Z\u00C0-\u017F\s]+(?:[-'][a-zA-Z\u00C0-\u017F]+)*$/,
-      //error: "",
+      cityRegex:
+        /^(?=.{3,50}$)[a-zA-Z\u00C0-\u017F\s]+(?:[-'][a-zA-Z\u00C0-\u017F]+)*$/,
+      error: false,
       weatherStyle: {},
       idVille: "",
       maxTemp: "",
@@ -155,78 +155,84 @@ export default {
   },
 
   methods: {
-    validateCity() {
+    async GetWeatherData() {
       if (!this.cityRegex.test(this.cityName)) {
-        this.invalidCity = true;
-      } else {
-        this.invalidCity = false;
+        this.error = true;
+        Swal.fire(
+  'Nom de ville incorrect ',
+  'Avez-vous entré des caractéres spéciaux ?',
+  'question'
+)
+        return;
+      }
+      try {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&lang=fr&appid=379a51582fe63ed2ee09a821404e11ad`
+        );
+        this.error = false;
+        const weatherData = response.data;
+        // Recurpère les informations météorologiques nécessaires
+        // console.log(weatherData);
+        const idVille = weatherData.id;
+        const maxTemp = Math.trunc(weatherData.main.temp_max);
+        const minTemp = Math.trunc(weatherData.main.temp_min);
+        const temp = Math.trunc(weatherData.main.temp);
+        const icon = weatherData.weather[0].icon;
+        const description = weatherData.weather[0].description;
+        const sunRise = new Date(weatherData.sys.sunrise * 1000);
+        const sunSet = new Date(weatherData.sys.sunset * 1000);
+        const sunHour = sunSet - sunRise;
+        const wind = weatherData.wind.speed;
+
+        // Affiche les informations météorologiques
+        this.idVille = idVille;
+        this.temp = temp;
+        this.maxTemp = maxTemp;
+        this.minTemp = minTemp;
+        this.icon = require("../../assets/svg/" + icon + ".svg");
+        this.description = description;
+        this.sunRise = sunRise;
+        this.sunSet = sunSet;
+        this.sunHour = sunHour;
+        this.wind = wind;
+
+        // console.log(this.sunHour, this.idVille);
+
+        const hours = sunHour / 1000 / 60 / 60; // Convertit la durée en heures
+        const sunshine = Math.trunc((hours / 24) * 100); // Calcule le taux d'ensoleillement en pourcentage
+        this.sunshine = sunshine;
+        // console.log(sunshine);
+
+        const sunElectricity = sunshine * 0.15;
+        this.sunElectricity = sunElectricity;
+
+        const windElectricity = (0.15 * 3) ^ (2.15 * Math.pow(wind, 2));
+        this.windElectricity = windElectricity;
+
+        localStorage.setItem("idCity", idVille);
+        localStorage.setItem("cityName", this.cityName);
+        localStorage.setItem("Temperature", temp);
+        localStorage.setItem("Description", description);
+        localStorage.setItem("sunProduction", sunElectricity);
+        localStorage.setItem("windProduction", windElectricity);
+      } catch (error) {
+        if (error.response.status === 404) {
+          this.error = true;
+         Swal.fire(
+  'Ville non trouvée',
+  'Avez-vous écris un nom de ville existant ?',
+  'question'
+)
+        } else {
+          console.error(error);
+        }
       }
     },
 
-    ajouter() {
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&lang=fr&appid=379a51582fe63ed2ee09a821404e11ad`
-        )
-        .then((response) => {
-          const weatherData = response.data;
-          // Recurpère les informations météorologiques nécessaires
-          // console.log(weatherData);
-          const idVille = weatherData.id;
-          const maxTemp = Math.trunc(weatherData.main.temp_max);
-          const minTemp = Math.trunc(weatherData.main.temp_min);
-          const temp = Math.trunc(weatherData.main.temp);
-          const icon = weatherData.weather[0].icon;
-          const description = weatherData.weather[0].description;
-          const sunRise = new Date(weatherData.sys.sunrise * 1000);
-          const sunSet = new Date(weatherData.sys.sunset * 1000);
-          const sunHour = sunSet - sunRise;
-          const wind = weatherData.wind.speed;
-
-          // Affiche les informations météorologiques
-          this.idVille = idVille;
-          this.temp = temp;
-          this.maxTemp = maxTemp;
-          this.minTemp = minTemp;
-          this.icon = require("../../assets/svg/" + icon + ".svg");
-          this.description = description;
-          this.sunRise = sunRise;
-          this.sunSet = sunSet;
-          this.sunHour = sunHour;
-          this.wind = wind;
-
-          // console.log(this.sunHour, this.idVille);
-
-          const hours = sunHour / 1000 / 60 / 60; // Convertit la durée en heures
-          const sunshine = Math.trunc((hours / 24) * 100); // Calcule le taux d'ensoleillement en pourcentage
-          this.sunshine = sunshine;
-          // console.log(sunshine);
-
-          const sunElectricity = sunshine * 0.15;
-          this.sunElectricity = sunElectricity;
-
-          const windElectricity = (0.15 * 3) ^ (2.15 * Math.pow(wind, 2));
-          this.windElectricity = windElectricity;
-
-          localStorage.setItem("cityName", this.cityName);
-          localStorage.setItem("Temperature", this.temp);
-          localStorage.setItem("Description", this.description);
-          localStorage.setItem("sunProduction", this.sunElectricity);
-          localStorage.setItem("windProduction", this.windElectricity);
-
-          this.error = null;
-        })
-        .catch(() => {
-          // Gérez les erreurs potentielles ici
-          this.weatherData = null;
-          this.error = "Nom de ville invalide";
-          this.showModal = true;
-          // console.error(`message erreur : ${err}`);
-        });
-    },
     resetCity() {
       this.cityName = "";
       this.idVille = "";
+      localStorage.removeItem("idCity", this.idVille);
       localStorage.removeItem("cityName", this.cityName);
       localStorage.removeItem("Temperature", this.temp);
       localStorage.removeItem("Description", this.description);
@@ -296,4 +302,7 @@ export default {
     }
   }
 }
+.invalid {
+    border: 2px solid red;
+  }
 </style>

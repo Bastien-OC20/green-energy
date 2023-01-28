@@ -31,6 +31,7 @@
     "node-sass": "^8.0.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
+    "sweetalert2": "^11.7.1",
     "vue-burger-menu": "^2.0.5"
   },
   "eslintConfig": {

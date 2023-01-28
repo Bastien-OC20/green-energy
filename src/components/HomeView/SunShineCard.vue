@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-parsing-error -->
 <template>
   <div class="widget__card_sun m-1">
     <p :key="sunshine" :sunshine="sunshine">
@@ -72,6 +71,9 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.data = JSON.parse(localStorage.getItem("data"));
+  },
 };
 </script>
 
@@ -91,6 +93,7 @@ export default {
   &_indicator {
     width: 100px;
     height: 150px;
+    padding: 1em 0em 1em 0em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,6 +102,8 @@ export default {
     border-radius: 10px;
     .iconProduct {
       width: 38px;
+      background: transparent;
+      background-color: transparent;
     }
     .progress {
       background-color: rgba(24, 24, 24, 0.199);

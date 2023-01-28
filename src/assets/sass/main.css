@@ -3,63 +3,48 @@
   flex-direction: column;
   align-items: center;
   text-align: left;
-}
-.home_title {
-  font-size: 1.5em;
-  font-weight: bold;
-  display: flex;
-  flex-wrap: nowrap;
+  padding: 1em;
 }
 .home_intro {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .home_intro_paragraph {
-  margin: 1.2em;
+  margin: 1em 0em 2em 0em;
 }
 .home_intro_paragraph_list1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 1em 0em 2em 0em;
-  padding: 1em;
+  padding-top: 2em;
+  margin: 1em 0em 4em 0em;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 .home_intro_paragraph_list1_energy1 {
-  width: 35%;
+  width: 40%;
+  align-items: center;
 }
 .home_intro_paragraph_list1_energy1::after {
   position: relative;
-  bottom: 80px;
-  left: 70px;
+  bottom: 50px;
+  left: 80px;
   border-radius: 10px;
 }
 .home_intro_paragraph_list1_energy2 {
   width: 40%;
+  align-items: center;
 }
 .home_intro_paragraph_list1_energy2::after {
   position: relative;
-  bottom: 100px;
-  left: 50px;
-  border-radius: 10px;
-}
-.home_intro_paragraph_list1_transition {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0em 0em 1em 0em;
-}
-.home_intro_paragraph_list1_energy3 {
-  width: 50%;
-}
-.home_intro_paragraph_list1_energy3::after {
-  width: 8em;
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  bottom: 25px;
-  left: 12px;
+  bottom: 90px;
+  left: 70px;
   border-radius: 10px;
 }
 .home_intro_paragraph_fossile {
@@ -69,7 +54,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  margin: auto;
+  margin: 0em 0em 2em 0em;
 }
 .home_intro_paragraph_fossile_pictureFossile {
   width: 3em;
@@ -90,13 +75,19 @@
 }
 .home_intro_paragraph_list2 {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 .home_intro_paragraph_list2_bienfait {
   width: 90%;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
 }
 .home_intro_paragraph_green {
   width: 90%;
@@ -133,7 +124,7 @@
   position: relative;
   border-radius: 15px;
   padding: 0.5em;
-  margin-bottom: 2em;
+  margin: 0em 1em 2em 1em;
 }
 .home .widget_header::before {
   position: absolute;
@@ -144,6 +135,9 @@
   z-index: -1;
   margin: -2px;
   border-radius: inherit;
+}
+.home .widget__form {
+  margin: 0em 1.2em 0em 1.2em;
 }
 .home .widget__form-group {
   position: relative;
