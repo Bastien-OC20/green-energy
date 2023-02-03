@@ -1,6 +1,6 @@
 <template>
   <div class="widget__card_sun m-1">
-    <p :key="sunshine" :sunshine="sunshine">
+    <p>
       le taux d'ensoleillement :
       <span class="badge text-bg-warning"> {{ sunshine }}% </span>en moyenne
     </p>
@@ -27,13 +27,13 @@
       </div>
     </div>
     <div>
-      <p :key="sunElectricity" :sunElectricity="sunElectricity">
+      <p>
         La production moyenne d'électricité est de :<span class="badge text-bg-success"
-          >{{ Math.trunc(sunElectricity) }} kWc / jour</span
+          >{{ sunElectricity }} kWc / jour</span
         >
         Soit
         <span class="badge text-bg-success">
-          {{ Math.trunc(sunElectricity * 365) / 10 }} kWc / an</span
+          {{ sunElectricity * 35 * 15 }} kWc / an</span
         >
         pour une puissance comprise en 300 Wc et 400 Wc par panneau.
       </p>
@@ -52,17 +52,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "SunshineCard",
   props: {
-    sunshine: {
-      type: Number,
-      required: true,
-    },
-    sunElectricity: {
-      type: Number,
-      required: true,
-    },
     iconSun: {
       type: String,
       required: true,
@@ -71,8 +64,17 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    this.data = JSON.parse(localStorage.getItem("data"));
+  computed: {
+    sunshine() {
+      return this.getSunshine;
+    },
+    sunHour() {
+      return this.getSunHour;
+    },
+    sunElectricity() {
+      return this.getSunElectricity;
+    },
+    ...mapGetters(["getSunshine", "getSunElectricity", "getSunHour"]),
   },
 };
 </script>

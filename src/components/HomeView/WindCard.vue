@@ -1,6 +1,6 @@
 <template>
   <div class="widget__card_wind m-1">
-    <p :key="wind" :wind="wind">
+    <p>
       la vitesse du vent :
       <span class="badge text-bg-info"> {{ wind }}km/h</span>
     </p>
@@ -22,16 +22,17 @@
           aria-valuemax="100"
           :style="'height:' + wind + 'px'"
         />
+        {{ wind }}km/h
       </div>
     </div>
     <div>
-      <p :key="windElectricity" :windElectricity="windElectricity">
+      <p>
         La production moyenne d'électricité est de :<span class="badge text-bg-success"
-          >{{ Math.trunc(windElectricity) }} kWh / jour
+          >{{ windElectricity }} kWh / jour
         </span>
         Soit
         <span class="badge text-bg-success">
-          {{ (Math.trunc(windElectricity) * 365) / 10 }} kWh / an</span
+          {{ (windElectricity * 365) / 10 }} kWh / an</span
         >
         avec une éolienne domestique horizontale
       </p>
@@ -40,17 +41,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "WindCard",
   props: {
-    wind: {
-      type: Number,
-      required: true,
-    },
-    windElectricity: {
-      type: Number,
-      required: true,
-    },
     iconWind: {
       type: String,
       required: true,
@@ -58,6 +52,15 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    wind() {
+      return this.getWind;
+    },
+    windElectricity() {
+      return this.getWindElectricity;
+    },
+    ...mapGetters(["getWind", "getWindElectricity"]),
   },
 };
 </script>

@@ -3,8 +3,10 @@
 </template>
 
 <script>
+import store from "./store";
 import NavBar from "./components/NavBar/NavBar.vue";
 export default {
+  store,
   name: "App",
   components: {
     NavBar,
