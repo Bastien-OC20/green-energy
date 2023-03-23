@@ -1,10 +1,10 @@
 <template>
-  <div class="widget__card_sun m-1">
+  <div class="estimation__card__body_sun m-1">
     <p>
       le taux d'ensoleillement :
       <span class="badge text-bg-warning"> {{ sunshine }}% </span>en moyenne
     </p>
-    <div class="widget__card_sun_indicator">
+    <div class="estimation__card__body_sun_indicator m-auto">
       <img
         :key="iconSun"
         class="iconProduct"
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="m-2">
       <p>
         La production moyenne d'électricité est de :<span class="badge text-bg-success"
           >{{ sunElectricity }} kWc / jour</span
@@ -80,73 +80,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/sass/scss/utils/variables.scss";
-
-.widget__card_sun {
-  background: $colorCadre2;
-  background-clip: padding-box;
-  position: relative;
-  border-radius: 15px;
-  padding: 0.5em;
-  margin-bottom: 10em;
-  box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-  -webkit-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-  -moz-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-  &_indicator {
-    width: 100px;
-    height: 150px;
-    padding: 1em 0em 1em 0em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    box-shadow: inset 2px 20px 10px 2px rgba(0, 0, 0, 0.53);
-    border-radius: 10px;
-    .iconProduct {
-      width: 38px;
-      background: transparent;
-      background-color: transparent;
-    }
-    .progress {
-      background-color: rgba(24, 24, 24, 0.199);
-      position: relative;
-      transform: translateY(-140%);
-      top: 92%;
-      width: 40px;
-      height: 100px;
-      border: darken(#98a7c7, 40%) 3px solid;
-      box-shadow: inset 0px 4px 6px #ccc;
-      &-sun {
-        background-color: #f5c732;
-        position: absolute;
-        bottom: 0;
-        width: 38px;
-        height: 40%;
-        border-top: 6px solid #fff;
-        box-sizing: border-box;
-        animation: grow 1.5s ease-out forwards;
-        transform-origin: bottom;
-        box-shadow: inset 0px 4px 6px rgba(100, 100, 100, 0.6);
-        text-align: center;
-      }
-    }
-    @keyframes grow {
-      from {
-        transform: scaleY(0);
-      }
-    }
-  }
-}
-.widget__card_sun::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -2px;
-  border-radius: inherit;
-  background: linear-gradient(to right, #919118, #fffffff0);
-}
+@import "../../assets/sass/main.scss";
 </style>

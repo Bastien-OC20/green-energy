@@ -1,21 +1,21 @@
 <template>
-  <section class="widget">
-    <div class="widget_header">
-      <h4 class="widget_header_title">Estimation :</h4>
-      <em class="widget_header_explain"
+  <section class="estimation">
+    <div class="estimation_header col-md-6 p-4">
+      <h4 class="estimation_header_title">Estimation :</h4>
+      <em class="estimation_header_explain"
         ><i class="fas fa-quote-left fa-sm text-primary" /> Pour vous aider dans votre
         reflexion, renseigner le champ ci-dessus, en indiquant le nom de la ville de votre
         choix, pour avoir une estimation de votre potentielle production éco-énergétique.
         <i class="fas fa-quote-right fa-sm text-primary explain"
       /></em>
     </div>
-    <article v-if="!idVille" class="widget__form">
+    <article v-if="!idVille" class="estimation__form">
       <form>
-        <div class="widget__form-group">
+        <div class="estimation__form-group">
           <input
             id="city "
             v-model="cityName"
-            class="widget__form-group__field "
+            class="estimation__form-group__field"
             type="text"
             required="required"
             aria-describedby="Nom de votre ville"
@@ -23,8 +23,8 @@
             @input="validateCity"
             :class="{ 'is-invalid': error }"
           />
-          <label for="name" class="widget__form-group__label">Nom de ville</label>
-          <div class="widget__form-group__frame">
+          <label for="city" class="estimation__form-group__label">Nom de ville</label>
+          <div class="estimation__form-group__frame">
             <button class="custom-btn btn-5" type="submit" @click="GetWeatherData()">
               Ajouter
             </button>
@@ -33,10 +33,12 @@
       </form>
     </article>
 
-    <article v-else class="widget__card col-12">
-      <div class="widget__card_header col-12">
+    <article v-else class="estimation__card">
+      <div
+        class="estimation__card_header bg-light col-2 rounded justify-content-center m-2"
+      >
         <h3
-          class="widget__card_header_title"
+          class="estimation__card_header_title m-2"
           :alt="cityName"
           :cityName="cityName"
           :aria-label="cityName"
@@ -44,45 +46,30 @@
         >
           {{ cityName }}
         </h3>
-        <a type="submit" class="btnRefresh" @click="resetCity"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="bi bi-arrow-clockwise btnRefresh_icon"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
-            />
-            <path
-              d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
-            /></svg
-        ></a>
+        <div class="mt-2">
+          <a type="submit" class="btnRefresh" @click="resetCity"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="bi bi-arrow-clockwise btnRefresh_icon"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+              />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+              /></svg
+          ></a>
+        </div>
       </div>
 
-      <div class="widget__card_body col-12">
-
-        <SunshineCard
-        
-          :icon-sun="iconSun"
-          class="widget__card_body_sun col-6"
-        />
-        <WindCard
-          
-          :icon-wind="iconWind"
-          class="widget__card_body_wind col-6"
-        />
+      <div class="estimation__card">
+        <div class="estimation__card__body">
+          <SunshineCard :icon-sun="iconSun" class="col-6" />
+          <WindCard :icon-wind="iconWind" class="col-6" />
+        </div>
       </div>
-    </article>
-    <article v-if="error" class="invalid-feedback">
-      <h4>Hélas ! La ville est introuvable !</h4>
-      <p>Le nom de la ville n'est pas valide ! Pensez à vérifier son orthographe</p>
-      <p> 
-        <ul>
-          <li>le nom  doit comporter au moins 3 caractères</li>
-          <li>Les chiffres sont eclus</li>
-        </ul>
-      </p>
     </article>
   </section>
 </template>
@@ -108,18 +95,15 @@ export default {
 
   data() {
     return {
-      cityRegex:
-        /^(?=.{3,50}$)[a-zA-Z\u00C0-\u017F\s]+(?:[-'][a-zA-Z\u00C0-\u017F]+)*$/,
+      cityRegex: /^(?=.{3,50}$)[a-zA-Z\u00C0-\u017F\s]+(?:[-'][a-zA-Z\u00C0-\u017F]+)*$/,
       error: false,
       weatherStyle: {},
       idVille: "",
-      
       icon: "",
       description: "",
       sunHour: "",
-   
       cityName: "",
-      wind:'',
+      wind: "",
       iconSun: require("../../assets/gif/soleil.gif"),
       iconWind: require("../../assets/gif/venteux.gif"),
     };
@@ -152,7 +136,7 @@ export default {
         const description = weatherData.weather[0].description;
         const sunRise = new Date(weatherData.sys.sunrise * 1000);
         const sunSet = new Date(weatherData.sys.sunset * 1000);
-        const sunHour = sunSet - sunRise ;
+        const sunHour = sunSet - sunRise;
         const wind = weatherData.wind.speed;
 
         // Affiche les informations météorologiques
@@ -162,7 +146,7 @@ export default {
         this.minTemp = minTemp;
         this.icon = require("../../assets/svg/" + icon + ".svg");
         this.description = description;
-        this.sunHour = sunHour ;
+        this.sunHour = sunHour;
         this.wind = wind;
 
         // Stocke les informations météorologiques dans le store de vuex
@@ -178,11 +162,11 @@ export default {
         const sunshine = Math.trunc((hours / 24) * 100); // Calcule le taux d'ensoleillement en pourcentage
         this.$store.commit("updateSunshine", sunshine);
 
-        const sunElectricity = sunshine * 0.15 ;
+        const sunElectricity = sunshine * 0.15;
         this.$store.commit("updateSunElectricity", Math.trunc(sunElectricity));
 
         const windElectricity = 0.15 * 3 * (2.15 * Math.pow(wind, 2));
-        this.$store.commit("updateWindElectricity" , Math.trunc(windElectricity));
+        this.$store.commit("updateWindElectricity", Math.trunc(windElectricity));
       } catch (error) {
         if (error.response.status === 404) {
           this.$store.commit("setError", true);
@@ -208,64 +192,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/sass/scss/layout/layout.scss";
-@import "../../assets/sass/scss/utils/variables.scss";
-@import "../../assets/sass/scss/utils/boutons.scss";
+@import "../../assets/sass/main.scss";
 
-.widget {
-  &_header {
-    background: $colorCadre3;
-    box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-    -webkit-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-    -moz-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
-    &_explain {
-      font-weight: lighter;
-    }
-  }
-  &_header::before {
-    content: "";
-    background: linear-gradient(to bottom, #aa5607, #fffffff0);
-  }
-  &__form {
-    &-group {
-      &__field {
-        font-family: inherit;
-        font-size: 1.3rem;
-        color: rgb(68, 67, 67);
-        background: transparent;
-        transition: border-color 0.2s;
-      }
-      &::placeholder {
-        color: transparent;
-      }
-
-      &:placeholder-shown ~ &__label {
-        font-size: 1.3rem;
-        cursor: text;
-        top: 20px;
-      }
-      &__label {
-        color: grey;
-      }
-
-      &__field:focus {
-        ~ &__label {
-          color: $textUnderline;
-          font-weight: 700;
-        }
-
-        font-weight: 700;
-        border-width: 3px;
-        border-image: linear-gradient(
-          to right,
-          rgba(28, 66, 192, 0.623),
-          rgb(46, 165, 145)
-        );
-        border-image-slice: 1;
-      }
-    }
-  }
-}
 .invalid {
   border: 2px solid red;
 }

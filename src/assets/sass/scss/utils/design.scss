@@ -1,0 +1,48 @@
+
+
+ .widget {
+   &__form {
+     &-group {
+       &__field {
+         width: 100%;
+          font-family: inherit;
+         border: 0;
+         border-bottom: 2px solid grey;
+         outline: 0;
+         padding: 7px 0;
+          color: #790773;
+            background: transparent;
+            transition: border-color 0.2s;
+       }
+             &::placeholder {
+               color: transparent;
+             }
+
+       &:placeholder-shown, &__label {
+         cursor: text;
+         top: 20px;
+          color: #C90CBF
+       }
+
+       &__label {
+         position: absolute;
+         top: 0;
+         display: block;
+         transition: 0.2s;
+          color: #C90CBF;
+       }
+
+       &__field:focus {
+         &__label {
+            color: #C90CBF;
+            font-weight: 700;
+            border-image: linear-gradient(to right,
+                  #3D017D,
+                  #8A1CFF);
+              border-image-slice: 1;
+              padding-bottom: 6px;
+         }
+       }
+     }
+   }
+ }

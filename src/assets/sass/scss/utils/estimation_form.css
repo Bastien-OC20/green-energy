@@ -1,0 +1,74 @@
+.estimation {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.estimation_header {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.estimation__form {
+  margin: 1.2em;
+}
+.estimation__form-group {
+  position: relative;
+  padding: 15px 0;
+  margin: 10px 0 2em;
+  width: 100%;
+}
+.estimation__form-group__field {
+  width: 100%;
+  font-size: 1.6rem;
+  border: 0;
+  border-bottom: 2px solid rgb(84, 62, 184);
+  outline: 0;
+  padding: 7px 0;
+}
+.estimation__form-group__field:focus {
+  font-weight: 700;
+  border-width: 3px;
+  padding-bottom: 6px;
+}
+.estimation__form-group__field:focus__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  padding-bottom: 6px;
+}
+.estimation__form-group__field:required, .estimation__form-group__field:invalid {
+  box-shadow: none;
+}
+.estimation__form-group__label {
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  cursor: text;
+}
+.estimation__form-group:placeholder-shown, .estimation__form-group__label {
+  top: 0;
+  font-size: 1.6rem;
+}
+.estimation__form-group__frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+.estimation__card {
+  display: flex;
+  flex-direction: row;
+  margin: 2em 0;
+}
+.estimation__card__header {
+  display: flex;
+  flex-direction: row;
+}
+.estimation__card__sun, .estimation__card__wind {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}/*# sourceMappingURL=estimation_form.css.map */

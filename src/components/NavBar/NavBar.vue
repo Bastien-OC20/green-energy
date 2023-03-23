@@ -1,217 +1,96 @@
 <template>
-  <nav class="navbar navbar-expand-md" role="navigation">
-    <div class="container-fluid menu-burger">
-      <div class="logo-brand">
-        <router-link to="/" class="routerlink" href="/" type="submit" @click="refresh">
-          <svg
-            version="1.1"
-            id="logoImg"
-            class="st0"
-            alt="Green_E Logo"
-            title="Green_E ou comment se faire idée du changement d'énergie"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 450 350"
-            enable-background="new 0 0 450 350"
-            xml:space="preserve"
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <LogoView @refresh-page="handleRefresh" />
+    <h1 class="navBar-title">Griin_Y !</h1>
+    <button
+      class="navbar-toggler"
+      :class="{ 'navbar--collapsed': isCollapsed }"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-md-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <router-link :to="'/'" class="routerlink mx-2 active" aria-current="page"
+            >Home</router-link
           >
-            <g>
-              <path
-                ref="recycled"
-                class="recycled"
-                d="M263.5,83.9c-1.1,6-6.4,14.6-10.2,18.6c2.4,10.7,39.6,13.2,49.4,19.6c2.2,0,4.3,0,6.5,0
-		c2.6-1.4,3.4-9.1,4.7-12.1c3.2-7.6,6-17.1,8.4-26.1c1.5-5.5,0.2-12.3,2.8-16.8c0.1-4.5,0.1-9.9-0.9-13c-6.2,1-16.4,5.5-20.5,9.3
-		c-7.5-1.8-15-17.7-22.4-22.4c-14.3-9-37-8.6-60.6-8.4c-3.3,2.1-8.6,0.8-13,1.9c-9,2.3-18.6,4-27,7.5c-13.8,5.7-26.9,13.9-38.2,22.4
-		c-6.2,4.7-10.4,12.2-15.8,17.7c0.7,6.2,26.8,26.9,32.6,29.8c1.6,1.6,14.9-11,17.7-13c13.7-9.8,29.8-20.1,45.7-27
-		c6.5-2.2,13-4.3,19.6-6.5C250.9,68.5,256,78.9,263.5,83.9z M214.1,70.9c-14.2,8.6-44.4,23.9-53.1,36.3c-5.3-1.7-26.2-19.4-28-24.2
-		c-0.3,0-0.6,0-0.9,0c0-0.3,0-0.6,0-0.9c11-10.6,22.1-21.5,36.3-28.9c7.4-3.8,16.5-6.8,24.2-9.3c4.2-1.4,8.1-0.7,11.2-2.8
-		c16.6,0.7,20.6,14.4,32.6,18.6C233.1,65.5,219.9,67.3,214.1,70.9z M219.7,40.1c0.7-0.6,2.1-1.2,2.8-1.9
-		c26.1-0.1,47.8-0.4,62.4,10.2c6.3,4.6,10.6,14.7,15.8,20.5c5.9-0.5,14-4.1,17.7-7.5c0.3,0,0.6,0,0.9,0c-0.5,22-8.3,37.8-12.1,55
-		c-19.9-0.6-30.7-11-47.5-13c3.2-6.2,8.5-11.5,10.2-18.6C254.2,68.4,239.6,52.6,219.7,40.1z M278.4,55c2.2-0.7,2.1-1,3.7-1.9
-		c-1.3-4-5.1-6.5-9.3-7.5c-2-1.5-7.2-2.4-9.3-0.9c-0.6,0-1.2,0-1.9,0c0,1.2,0,2.5,0,3.7C269.9,48.4,275.2,50.1,278.4,55z M145.1,83
-		c-0.9,0-1.9,0-2.8,0c-0.3,0.9-0.6,1.9-0.9,2.8c3.8,3.5,9.3,7.8,12.1,12.1c2.2-0.2,2.6-0.2,3.7-0.9c0.3,0,0.6,0,0.9,0
-		C156,90.8,148.7,88.2,145.1,83z M114.4,247.9c-3.5-8.1,1.5-18.5,3.7-24.2c3.8-10.1,6.1-19.1,10.2-28.9c2.6-6.1,6.6-12.7,8.4-19.6
-		c5.5,0.8,14.6,3.4,18.6,6.5c2.4-0.2,3.2-0.4,4.7-0.9c-0.4-13.3-5.9-22.2-9.3-32.6c-3-9.2-3.5-17.7-7.5-25.2c-1.6,0-3.1,0-4.7,0
-		c-3.4,2.2-8.3,0.8-13,1.9c-10.2,2.4-27.6,2.7-35.4,8.4c-0.9,0.3-1.9,0.6-2.8,0.9c0,0.6,0,1.2,0,1.9c5.3,5,9.6,11.8,15.8,15.8
-		c-4,14.2-14.6,30.6-21.4,43.8c-2.7,5.2-9.3,12.3-6.5,22.4c4.4,16.4,18.1,27.2,27,39.1c19.3,25.8,25.1,38.5,60.6,49.4
-		c6.1,1.9,39.6,10.4,45.7,6.5c0.6,0,1.2,0,1.9,0c3.5-14.9,3.7-43.6-2.8-55C179.7,258.4,125.1,272.4,114.4,247.9z M79.9,216.2
-		c-1.8-6.9,3.8-12.7,5.6-16.8c5.1-11.8,15.3-36.5,23.3-44.7c-0.9-8.6-8.3-11.9-13-16.8c-0.3,0-0.6,0-0.9,0c0-0.6,0-1.2,0-1.9
-		c6.4-1.4,31-4.7,35.4-7.5c3.8,0,7.8,0.1,10.2,0.9c2.6,10.9,8.5,36.5,14.9,43.8c0,0.9,0,1.9,0,2.8c-5.6-1.4-14.5-6.6-18.6-5.6
-		c-5.8,2.4-6.6,13.1-9.3,18.6c-9.2,18.6-21.3,39.7-20.5,67.1C98.5,250.4,82.8,227.3,79.9,216.2z M206.6,308.5
-		c-34.3-0.3-68.8-9.6-83.9-29.8c-4.5-6-5.7-14.1-10.2-20.5c0-1.2,0-2.5,0-3.7c16.3,10.5,40,16.8,67.1,11.2
-		c7.9-1.6,16.7,0.9,22.4-2.8c0.6,0,1.2,0,1.9,0C206.8,277,206.9,291.7,206.6,308.5z M373.4,231.1c-8.1-34.2-17.4-66.9-32.6-94.1
-		c-2.3-0.5-3.4-0.9-6.5-0.9c-8.1,6-27,7.1-36.3,12.1c0.4,19.6,14.9,45.6,21.4,61.5c4.5,11,5.7,26.9,13,35.4
-		c-2.9,6.7-27.6,10.8-34.5,15.8c-5.6-1.2-8.2-14.1-9.3-19.6c-9.9,1-33.2,30.8-41,38.2c0.3,10,7,10.8,13,14.9
-		c6.6,4.4,13.1,10.4,19.6,14.9c4.7,3.3,10.4,4.9,14.9,8.4c3.9-0.2,4.3-0.6,6.5-1.9c-0.5-4.8-0.4-14.8-2.8-18.6
-		c0.2-3.9,0.6-4.3,1.9-6.5c13.8-0.4,29.3-2.7,41.9-5.6c7.1-1.6,14.7-0.1,19.6-3.7C371.6,278.1,377.2,247.1,373.4,231.1zM314.7,188.3c-4.2-10.1-5.2-22.9-11.2-31.7c0.6-12,19.3-9,27-14c2.5,0,5,0,7.5,0c10.9,17,17.5,42.1,24.2,62.4
-		c2.3,7,1.8,16.6,5.6,22.4c-1,4.5-24.4,15.6-29.8,16.8C330,225.6,322.3,206.8,314.7,188.3z M361.3,276.8
-		c-13.6,3.1-29.9,4.3-43.8,7.5c-5.8,1.3-12.4-0.7-16.8,1.9c-4.2,0.1-5.1,0.6-7.5,1.9c-0.1,5.8-0.6,14,1.9,17.7c0,1.6,0,3.1,0,4.7
-		c-16-4.5-26.6-18.5-41-25.2c0.7-6.1,25.4-31,30.7-34.5c0-0.3,0-0.6,0-0.9c0.3,0,0.6,0,0.9,0c1.4,6.2,3.3,12.5,5.6,17.7
-		c18.5-3.1,37.8-13.6,54-20.5c6.9-2.9,16-4,20.5-9.3C371.6,245.5,364.8,271.3,361.3,276.8z M311.9,154.7c0,1.2,0,2.5,0,3.7
-		c7.9-0.9,10.4-4.8,20.5-4.7c0.9-1-0.1-0.1,0.9-0.9c-0.3-2.1-0.4-2.3-0.9-3.7C322.3,149.2,318.1,151.6,311.9,154.7z M90.2,203.2
-		c0-0.3,0-0.6,0-0.9c-8.5,3-5,14.1-2.8,20.5c1.2,0,2.5,0,3.7,0c-0.6-5.1-3.9-11.6,0-15.8C90.9,204.7,90.9,204.3,90.2,203.2zM359.4,260c-0.9,2.8-1.9,5.6-2.8,8.4c-3.5,0.9-5.2,1.9-10.2,1.9c0.2,2.4,0.4,3.2,0.9,4.7c7.8,0.1,13.1-2.5,14.9-8.4
-		c1-1.4,1-3.8,0.9-6.5C361.9,260,360.7,260,359.4,260z M199.2,272.1c-2.1,0.3-2.3,0.4-3.7,0.9c0.7,8.7,1.1,14.8,0.9,24.2
-		c2.4-0.2,3.2-0.4,4.7-0.9c0-8.1-0.5-16.5-0.9-23.3C199.1,272.2,200,273.1,199.2,272.1z"
-              />
-            </g>
-            <g>
-              <path
-                d="M270.3,156.9c-7.3-19-23.3-32.1-50-31.7c-4.3,0.9-8.6,1.8-12.9,2.7c-7,2.8-11.9,7.6-17.7,11.3
-		c-0.7,0.1-0.8,0.1-1.6-1.1c-0.4,0-0.7,0-1.1,0c-0.4,1.8-0.6,5-1.6,6.4c0,0.2,0,0.4,0,0.5c2.3-0.3,5-1,6.4-2.1
-		c0.9-0.3,0.5-0.1,1.1-0.5c-0.7-0.4-1.1-0.6-1.6-1.1c-0.4-0.6-0.2-0.1-0.5-1.1c6.3-3.4,11.2-8.7,18.8-11.3c25-8.4,46.1,6.2,55.4,21
-		c6.5,10.3,9.5,24.8,5.4,38.2c-0.9,2.9-0.8,5.1-2.7,7c0.3,0.9,0.1,0.5,0.5,1.1c0,0.2,0,0.4,0,0.5c0.4,0,0.7,0,1.1,0
-		c1.5-6.5,3.3-10.5,4.8-17.2C276,171.2,272.3,162.1,270.3,156.9z M226.2,175.8c-5.7,2.4-11.1,2.6-15.6,5.9c-4.8,3.5-5.5,9.3-9.1,14
-		c0,1.7,0.2,2.8,0.5,3.8c3.6-0.8,2.6-4.5,4.3-7c0-0.2,0-0.4,0-0.5c4.4,1.6,7.8,5.2,13.4,5.9c2.2,0.3,6.4-1.1,8.1-1.6
-		c12.8-3.9,16.7-13.5,16.7-30.1c0-5.6,0.6-16.4-2.1-19.9c-5.4,6.9-15.7,5.5-25.3,8.6c-7.8,2.5-12.7,6.8-15.6,14.5
-		c-1.6,4.2-1.7,13,1.1,16.1c0,0.4,0,0.7,0,1.1c3.3-1.4,5.5-5.6,8.6-7.5c4.4-2.8,10.5-2.3,15.6-4.8c6.1-3.1,7.9-8.8,12.4-13.4
-		c0-0.4,0-0.7,0-1.1c0.2,0,0.4,0,0.5,0C238,166.1,232,173.3,226.2,175.8z M240.2,156.4c0.4,0.6,0.2,0.1,0.5,1.1c-0.2,0-0.4,0-0.5,0
-		C240.2,157.1,240.2,156.8,240.2,156.4z M239.7,158c0.4,0.6,0.2,0.1,0.5,1.1c-0.2,0-0.4,0-0.5,0C239.7,158.7,239.7,158.4,239.7,158zM181.1,153.2c-0.5,0-1.1,0-1.6,0c-0.2,0.9-0.4,1.8-0.5,2.7c0.5,0,1.1,0,1.6,0C180.7,155,180.9,154.1,181.1,153.2z M179.5,156.4
-		c-0.4,0-0.7,0-1.1,0c-0.3,0.7-0.6,1.6-1.1,2.1c0,0.4,0,0.7,0,1.1c0.5,0,1.1,0,1.6,0C179.1,158.6,179.3,157.5,179.5,156.4zM177.9,160.7c0-0.2,0-0.4,0-0.5c-0.2,0-0.4,0-0.5,0c-0.7,1.6-1.4,3.2-1.6,5.4c0.5,0,1.1,0,1.6,0
-		C177.6,163.6,178.4,161.8,177.9,160.7z M258,208.5c-3.4,9.3-29.7,17.4-44.1,13.4c-18.2-5-28.7-15.7-34.9-32.8
-		c-2.1-5.7-4-15.6-1.6-22.6c-0.5-0.2-1.1-0.4-1.6-0.5c-2.3,6.7-0.6,16.3,1.1,22c5.1,16.9,15.9,29,32.2,34.4
-		c4.8,1.6,13.3,3.6,19.9,2.1c8.9-1.9,16.6-3.8,23.1-8.1c2.4-1.6,4.5-4.3,7-5.9c0.5-0.7,1.4,0.4,2.1,1.1c0.2,0,0.4,0,0.5,0
-		c0.4-1.8,0.6-5,1.6-6.4c0-0.2,0-0.4,0-0.5c-2.3,0.3-5,1-6.4,2.1C255.6,207.8,256.5,207.6,258,208.5z"
-              />
-            </g>
-          </svg>
-        </router-link>
-        <h1 class="navBar-title">Green-E !</h1>
-      </div>
-      <button
-        class="navbar-toggler bg-white"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <router-link
-              to="/"
-              class="routerlink mx-2 active"
-              aria-current="page"
-              href="/"
-              >Home</router-link
-            >
-          </li>
-          <li class="nav-item dropdown">
-            <router-link to="/solaire" class="routerlink mx-2" href="/solaire"
-              >Le solaire</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/eolien" class="routerlink mx-2" href="/eolien"
-              >L'éolien</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/about" class="routerlink mx-2" href="/about"
-              >About</router-link
-            >
-          </li>
-        </ul>
-      </div>
+        </li>
+        <li class="nav-item">
+          <router-link :to="'/solaire'" class="routerlink mx-2">Le solaire</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link :to="'/eolien'" class="routerlink mx-2">L'éolien</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link :to="'/about'" class="routerlink mx-2">About</router-link>
+        </li>
+      </ul>
     </div>
   </nav>
   <router-view />
 </template>
 <script>
-import anime from "animejs/lib/anime.es.js";
+import LogoView from "@/components/NavBar/LogoView.vue";
+
 export default {
-  components: {},
+  name: "NavBar",
+  components: {
+    LogoView,
+  },
   data() {
     return {
-      logo: require("../../assets/logo.png"),
+      refresh: this.refresh,
+      isCollapsed: false,
     };
   },
-  mounted() {
-    // anime({
-    //   targets: this.$refs.recycled,
-    //   backgroundColor: "#FFF",
-    //   duration: 5000,
-    //   rotate: 360,
-    //   easing: "linear",
-    //   loop: true,
-    //   direction: "normal",
-    // });
-  },
+
+  mounted() {},
   methods: {
-    refresh() {
-      anime({
-        targets: this.$refs.recycled,
-        backgroundColor: "#FFF",
-        duration: 1000,
-        rotate: [-360, 0],
-        easing: "linear",
-        loop: "1turn",
-        direction: "normal",
-      });
+    handleRefresh(refreshFunc) {
+      refreshFunc();
     },
   },
 };
 </script>
-
 <style lang="scss">
-.router-link-active {
-  font-weight: 900;
-  color: #42b983;
-}
-.navbar {
-  display: flex;
-  flex-direction: row;
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-  background-image: url("../../assets/img/green_E.png");
-  background-size: cover;
-  background-position: center;
+@import "../../assets/sass/main.scss";
 
-  .menu-burger {
-    display: flex;
-    justify-content: flex-end;
-    .logo-brand {
-      .navBar-title {
-        display: flex;
-        justify-content: center;
-        color: white;
-      }
-      #logoImg,
-      .st0 {
-        width: 15em;
-        display: flex;
-        position: relative;
-        right: 8em;
-        fill: #ffffff;
-      }
-    }
-  }
-  .nav-item {
-    margin: 0.8em 0em 0.8em 0em;
+.navbar {
+  padding: 0;
+  margin-bottom: 4em;
+  display: flex;
+  width: auto;
+  border-radius: 0 0 15px 15px;
+
+  .router-link-active,
+  a {
+    font-weight: 900;
+    color: #42b983;
   }
 
   .routerlink,
   a {
-    font-weight: 700;
-    color: #ffffff;
+    font-size: clamp(1rem, 6vw, 1.6rem);
+    font-weight: 500;
+    color: #000000;
     text-decoration: none;
-    margin: 1.8em 0em 1.8em 0em;
+    margin: 0em 0.5em 0em 0.5em;
   }
+
   .routerlink:focus,
   a:focus {
     font-weight: 900;
     color: #42b983;
   }
-}
-.recycled {
-  transform-box: fill-box;
-  transform-origin: center;
+
+  a:hover {
+    color: #42b983;
+  }
 }
 </style>

@@ -1,6 +1,15 @@
-@import './scss/layout/layoutSmall.scss';
-@import './scss/layout/layout.scss';
-@import './scss/utils/variables.scss';
-@import './scss/utils/mixin.scss';
-@import './scss/utils/color.scss';
+/** Layout **/
+// @import './scss/layout/layoutSmall.scss';
+// @import './scss/layout/layoutMedium.scss';
+// @import './scss/layout/layoutLarge.scss';
+// @import './scss/layout/layoutExtraLarge.scss';
+/** Variables **/
+ @import './scss/utils/variables.scss';
+/** Design **/
+@import './scss/utils/design.scss';
+
+/** Utils **/
 @import './scss/utils/boutons.scss';
+@import './scss/utils/estimation_form.scss';
+
+@import './scss/utils/footbar.scss';

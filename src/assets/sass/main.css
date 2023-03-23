@@ -1,132 +1,489 @@
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  padding: 1em;
+/** Layout **/
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap");
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /** -----------------NavBAr----------------------- **/
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+  }
+  .navbar .menu-burger {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .navbar .menu-burger .logo-brand .navBar-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+  .navbar .menu-burger .logo-brand #logoImg,
+  .navbar .menu-burger .logo-brand .st0 {
+    width: 15em;
+    display: flex;
+    position: relative;
+    right: 0em;
+    fill: #ffffff;
+  }
+  .navbar .nav-item {
+    margin: 0.8em 0em 0.8em 0em;
+  }
+  .recycled,
+  .leaf {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  /** -----------------Home-------------------------- **/
+  .home {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+  .home_intro {
+    margin-top: 20em;
+  }
+  .home_intro_title {
+    display: flex;
+    justify-content: center;
+  }
+  .home_intro_paragraph {
+    margin: 2em 0em 2em 0em;
+    text-align: start;
+  }
+  .home_intro_paragraph_list1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+  }
+  .home_intro_paragraph_list1_pictureEolienne, .home_intro_paragraph_list1_picturePanneau {
+    display: flex;
+    margin: 0.8em;
+  }
+  .home_intro_paragraph_fossile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+  }
+  .home_intro_paragraph_fossile_pictureFossile {
+    width: 15%;
+  }
+  .home_intro_paragraph_fossile_pictureFossile.redStorm {
+    width: 10%;
+  }
+  .home_intro_paragraph_fossile_egal, .home_intro_paragraph_fossile_plus {
+    font-size: 4em;
+  }
+  .home_intro_paragraph_green {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+  }
+  .home_intro_paragraph_green_picturegreen {
+    width: 15%;
+  }
+  .home_intro_paragraph_green_picturegreen.blueStorm {
+    width: 10%;
+  }
+  .home_intro_paragraph_green_egal, .home_intro_paragraph_green_plus {
+    font-size: 4em;
+  }
+  .home_intro_paragraph_list2 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .home_intro_paragraph_list2_bienfait {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .home .widget_header {
+    background-clip: padding-box;
+    position: relative;
+    border-radius: 15px;
+    padding: 0.5em;
+    margin: 1em 0em 2em 0em;
+  }
+  .home .widget_header::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -2px;
+    border-radius: inherit;
+  }
+  .home .widget__form {
+    margin: 0em 1.2em 0em 1.2em;
+  }
+  .home .widget__form-group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 2em;
+    /* reset input */
+  }
+  .home .widget__form-group__field {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid grey;
+    outline: 0;
+    padding: 7px 0;
+  }
+  .home .widget__form-group:placeholder-shown ~ .home .widget__form-group__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+  .home .widget__form-group__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+  }
+  .home .widget__form-group__field:focus {
+    padding-bottom: 6px;
+  }
+  .home .widget__form-group__field:focus__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+  }
+  .home .widget__form-group__field:required, .home .widget__form-group__field:invalid {
+    box-shadow: none;
+  }
+  .home .widget__form-group__frame {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+  }
+  .home .widget__card {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 0em 2em 0em;
+  }
+  .home .widget__card_header {
+    display: flex;
+    flex-direction: row;
+  }
+  .home .widget__card_body {
+    display: flex;
+    flex-direction: row;
+  }
+  .home .widget__card_body_sun, .home .widget__card_body_wind {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /** -----------------Eolien------------------------- **/
+  .eolien {
+    padding: 20em 1em 0 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  .eolien_title {
+    display: flex;
+    justify-content: center;
+  }
+  .eolien_paragraph {
+    margin: 2em 0em 2em 0em;
+    text-align: start;
+  }
+  .eolien_paragraph:nth-child(3) {
+    margin-top: 20em;
+  }
+  .eolien_paragraph:nth-child(6) {
+    margin-top: 2em;
+  }
+  /** ----------------Solar------------------------- **/
+  .solar {
+    padding: 20em 1em 0 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  .solar_title {
+    display: flex;
+    justify-content: center;
+  }
+  .solar_paragraph {
+    margin: 2em 0em 2em 0em;
+    text-align: start;
+  }
+  .solar_paragraph:nth-child(3) {
+    margin-top: 2em;
+  }
+  .solar_paragraph:nth-child(6) {
+    margin-top: 2em;
+  }
+  /** -----------------About------------------------- **/
+  .about {
+    padding: 20em 1em 0 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  .about_title {
+    display: flex;
+    justify-content: center;
+  }
+  .about_paragraph {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 2em 0em 2em 0em;
+    text-align: start;
+  }
+  .about_paragraph_list {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+  }
+  .about_paragraph_list_puce {
+    margin: 0.5em;
+  }
 }
-.home_intro {
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+  }
+  .navbar .menu-burger {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .navbar .menu-burger .logo-brand .navbar-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 6em;
+    color: white;
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  .navbar .menu-burger .logo-brand #logoImg,
+  .navbar .menu-burger .logo-brand .st0 {
+    width: 15em;
+    display: flex;
+    position: relative;
+    right: 0em;
+    fill: #ffffff;
+  }
+  .navbar .nav-item {
+    font-size: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.2em 0 0.2em 0;
+  }
+  .recycled,
+  .leaf {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .home {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+  .home_intro {
+    margin-top: 20em;
+  }
+  .home_intro_title {
+    display: flex;
+    justify-content: center;
+  }
+  .home_intro_paragraph {
+    margin: 2em 0.5em 2em 0.5em;
+  }
+  .home_intro_paragraph_list1 {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+  }
+  .home_intro_paragraph_list1_pictureEolienne, .home_intro_paragraph_list1_picturePanneau {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    margin: 0.8em;
+  }
+  .home_intro_paragraph_fossile, .home_intro_paragraph_green {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    padding: 1em;
+  }
+  .home_intro_paragraph_fossile_pictureFossile, .home_intro_paragraph_fossile_picturegreen, .home_intro_paragraph_green_pictureFossile, .home_intro_paragraph_green_picturegreen {
+    width: 10%;
+  }
+  .home_intro_paragraph_fossile_pictureFossile.redStorm, .home_intro_paragraph_fossile_pictureFossile.blueStorm, .home_intro_paragraph_fossile_picturegreen.redStorm, .home_intro_paragraph_fossile_picturegreen.blueStorm, .home_intro_paragraph_green_pictureFossile.redStorm, .home_intro_paragraph_green_pictureFossile.blueStorm, .home_intro_paragraph_green_picturegreen.redStorm, .home_intro_paragraph_green_picturegreen.blueStorm {
+    width: 5%;
+  }
+  .home_intro_paragraph_fossile_egal, .home_intro_paragraph_fossile_plus, .home_intro_paragraph_green_egal, .home_intro_paragraph_green_plus {
+    font-size: 4em;
+  }
+  .home_intro_paragraph_list2 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .home_intro_paragraph_list2_bienfait {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+/** -----------------Eolien------------------------- **/
+.eolien,
+.solar,
+.about {
+  padding: 20em 1em 0;
   display: flex;
   flex-direction: column;
+}
+.eolien__title,
+.solar__title,
+.about__title {
+  display: flex;
   justify-content: center;
-  align-items: center;
+}
+.eolien__paragraph,
+.solar__paragraph,
+.about__paragraph {
+  margin: 2em 0;
+  text-align: start;
+}
+.eolien__paragraph:nth-child(3),
+.solar__paragraph:nth-child(3),
+.about__paragraph:nth-child(3) {
+  margin-top: 2em;
+}
+.eolien__paragraph:nth-child(6),
+.solar__paragraph:nth-child(6),
+.about__paragraph:nth-child(6) {
+  margin-top: 2em;
+}
+.eolien .about__paragraph,
+.solar .about__paragraph,
+.about .about__paragraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.eolien .about__paragraph__list,
+.solar .about__paragraph__list,
+.about .about__paragraph__list {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+.eolien .about__paragraph__list__puce,
+.solar .about__paragraph__list__puce,
+.about .about__paragraph__list__puce {
+  margin: 0.5em;
+}
+
+@media only screen and (min-width: 1224px) {
+  /* Styles */
+}
+@media only screen and (min-width: 1824px) {
+  /* Styles */
+}
+/** Variables **/
+/** Design **/
+#app {
+  font-family: "Oswald", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #ffffff;
+  background: radial-gradient(circle, rgb(36, 1, 74) 10%, rgb(139, 141, 24) 90%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.router-link-active {
+  font-weight: 900;
+  color: #42b983;
+}
+
+.routerlink,
+a {
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 1.8em 0em 1.8em 0em;
+}
+
+.routerlink:focus,
+a:focus {
+  font-weight: 900;
+  color: #42b983;
+}
+
+.home_intro_title {
+  font-weight: bolder;
 }
 .home_intro_paragraph {
-  margin: 1em 0em 2em 0em;
+  text-align: start;
 }
 .home_intro_paragraph_list1 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding-top: 2em;
-  margin: 1em 0em 4em 0em;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-}
-.home_intro_paragraph_list1_energy1 {
-  width: 40%;
-  align-items: center;
-}
-.home_intro_paragraph_list1_energy1::after {
-  position: relative;
-  bottom: 50px;
-  left: 80px;
-  border-radius: 10px;
-}
-.home_intro_paragraph_list1_energy2 {
-  width: 40%;
-  align-items: center;
-}
-.home_intro_paragraph_list1_energy2::after {
-  position: relative;
-  bottom: 90px;
-  left: 70px;
-  border-radius: 10px;
-}
-.home_intro_paragraph_fossile {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: baseline;
-  margin: 0em 0em 2em 0em;
-}
-.home_intro_paragraph_fossile_pictureFossile {
-  width: 3em;
-  height: 50%;
-  display: flex;
-  align-items: baseline;
-}
-.home_intro_paragraph_fossile_pictureFossile.redStorm {
-  display: flex;
-  position: relative;
-  top: 1em;
-}
-.home_intro_paragraph_fossile_egal, .home_intro_paragraph_fossile_plus {
-  width: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.home_intro_paragraph_list2 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-}
-.home_intro_paragraph_list2_bienfait {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-}
-.home_intro_paragraph_green {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: baseline;
-  margin: auto;
-}
-.home_intro_paragraph_green_picturegreen {
-  width: 3em;
-  height: 50%;
-  display: flex;
-  align-items: baseline;
-}
-.home_intro_paragraph_green_picturegreen.blueStorm {
-  display: flex;
-  position: relative;
-  top: 1em;
-}
-.home_intro_paragraph_green_egal, .home_intro_paragraph_green_plus {
-  width: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.home .widget {
-  display: flex;
-  flex-direction: column;
-}
-.home .widget_header {
-  background-clip: padding-box;
-  position: relative;
+  background: #CAC900;
+  box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
   border-radius: 15px;
-  padding: 0.5em;
-  margin: 0em 1em 2em 1em;
 }
-.home .widget_header::before {
+.home_intro_paragraph_list1_pictureEolienne, .home_intro_paragraph_list1_picturePanneau {
+  border-radius: 35px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.home_intro_paragraph_fossile, .home_intro_paragraph_green {
+  background: #CAC900;
+  background-clip: padding-box;
+  border-radius: 15px;
+  padding: 0.1em;
+  box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+  -moz-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+}
+.home_intro_paragraph_fossile_egal, .home_intro_paragraph_fossile_plus, .home_intro_paragraph_green_egal, .home_intro_paragraph_green_plus {
+  color: rgba(0, 0, 0, 0.9411764706);
+}
+.home_intro_paragraph_fossile::before, .home_intro_paragraph_green::before {
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -135,74 +492,116 @@
   z-index: -1;
   margin: -2px;
   border-radius: inherit;
+  background: linear-gradient(to bottom, #919118, rgba(255, 255, 255, 0.9411764706));
 }
-.home .widget__form {
-  margin: 0em 1.2em 0em 1.2em;
+.home_intro_paragraph_list2 {
+  text-decoration: none;
+  list-style: none;
 }
-.home .widget__form-group {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
+
+.widget__form-group__field {
   width: 100%;
-  margin-bottom: 2em;
-  /* reset input */
-}
-.home .widget__form-group__field {
-  width: 100%;
+  font-family: inherit;
   border: 0;
   border-bottom: 2px solid grey;
   outline: 0;
   padding: 7px 0;
+  color: #790773;
+  background: transparent;
+  transition: border-color 0.2s;
 }
-.home .widget__form-group:placeholder-shown ~ .home .widget__form-group__label {
-  font-size: 1.3rem;
+.widget__form-group::placeholder {
+  color: transparent;
+}
+.widget__form-group:placeholder-shown, .widget__form-group__label {
   cursor: text;
   top: 20px;
+  color: #C90CBF;
 }
-.home .widget__form-group__label {
+.widget__form-group__label {
   position: absolute;
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 1rem;
+  color: #C90CBF;
 }
-.home .widget__form-group__field:focus {
+.widget__form-group__field:focus__label {
+  color: #C90CBF;
+  font-weight: 700;
+  border-image: linear-gradient(to right, #3D017D, #8A1CFF);
+  border-image-slice: 1;
   padding-bottom: 6px;
 }
-~ .home .widget__form-group__field:focus__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-}
-.home .widget__form-group__field:required, .home .widget__form-group__field:invalid {
-  box-shadow: none;
-}
-.home .widget__form-group__frame {
-  width: 90%;
-  margin: 40px auto;
-  text-align: center;
-}
-.home .widget__card {
+
+/** -----------------Eolien------------------------- **/
+.eolien {
+  padding: 20em 1em 0 1em;
   display: flex;
   flex-direction: column;
+}
+.eolien_title {
+  display: flex;
+  justify-content: center;
+}
+.eolien_paragraph {
   margin: 2em 0em 2em 0em;
+  text-align: start;
 }
-.home .widget__card_header {
-  display: flex;
-  flex-direction: row;
+.eolien_paragraph:nth-child(3) {
+  margin-top: 20em;
 }
-.home .widget__card_body {
-  display: flex;
-  flex-direction: row;
-}
-.home .widget__card_body_sun, .home .widget__card_body_wind {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.eolien_paragraph:nth-child(6) {
+  margin-top: 2em;
 }
 
+/** ----------------Solar------------------------- **/
+.solar {
+  padding: 20em 1em 0 1em;
+  display: flex;
+  flex-direction: column;
+}
+.solar_title {
+  display: flex;
+  justify-content: center;
+}
+.solar_paragraph {
+  margin: 2em 0em 2em 0em;
+  text-align: start;
+}
+.solar_paragraph:nth-child(3) {
+  margin-top: 2em;
+}
+.solar_paragraph:nth-child(6) {
+  margin-top: 2em;
+}
+
+/** -----------------About------------------------- **/
+.about {
+  padding: 20em 1em 0 1em;
+  display: flex;
+  flex-direction: column;
+}
+.about_title {
+  display: flex;
+  justify-content: center;
+}
+.about_paragraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 2em 0em 2em 0em;
+  text-align: start;
+}
+.about_paragraph_list {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+.about_paragraph_list_puce {
+  margin: 0.5em;
+}
+
+/** Utils **/
 .button {
   margin: 20px;
 }
@@ -275,4 +674,157 @@
 .btnRefresh_icon {
   width: 36px;
   fill: #09b926;
+}
+
+.estimation {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.estimation_header {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-clip: padding-box;
+  border-radius: 15px;
+  padding: 0.5em;
+  background: #FF8142;
+  box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+  -moz-box-shadow: 2px 20px 14px 5px rgba(0, 0, 0, 0.53);
+}
+.estimation_header_explain {
+  font-weight: lighter;
+}
+.estimation_header_header::before {
+  content: "";
+  background: linear-gradient(to bottom, #aa5607, rgba(255, 255, 255, 0.9411764706));
+}
+.estimation__form {
+  margin: 1.2em 1.2em 0em 1.2em;
+}
+.estimation__form-group {
+  position: relative;
+  padding: 15px 0;
+  margin: 10px 0 2em;
+  width: 100%;
+  /* reset input */
+}
+.estimation__form-group__field {
+  width: 100%;
+  font-size: 1.6rem;
+  font-family: inherit;
+  border: 0;
+  border-bottom: 2px solid rgb(84, 62, 184);
+  outline: 0;
+  padding: 7px 0;
+  color: #790773;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.estimation__form-group__field:focus {
+  font-weight: 700;
+  border-width: 3px;
+  padding-bottom: 6px;
+  border-image: linear-gradient(to right, #3D017D, #8A1CFF);
+  border-image-slice: 1;
+}
+.estimation__form-group__field:focus__label {
+  color: #C90CBF;
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  padding-bottom: 6px;
+}
+.estimation__form-group__field:required, .estimation__form-group__field:invalid {
+  box-shadow: none;
+}
+.estimation__form-group::placeholder {
+  color: transparent;
+}
+.estimation__form-group__label {
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  cursor: text;
+  color: #3a0337;
+}
+.estimation__form-group:placeholder-shown, .estimation__form-group__label {
+  top: 0;
+  font-size: 1.6rem;
+  color: #5e0e5a;
+}
+.estimation__form-group__frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+.estimation__form-group__field {
+  margin-top: 1em;
+  color: #3a0437;
+}
+.estimation__form-group__field:required, .estimation__form-group__field:invalid {
+  box-shadow: none;
+}
+.estimation__form-group__frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+.estimation__card {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0;
+}
+.estimation__card__header {
+  display: flex;
+  flex-direction: row;
+}
+.estimation__card__sun, .estimation__card__wind {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/** -----------------NavBAr----------------------- **/
+.navbar {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+}
+.navbar .menu-burger {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navbar .menu-burger .logo-brand .navBar-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+.navbar .menu-burger .logo-brand #logoImg,
+.navbar .menu-burger .logo-brand .st0 {
+  width: 15em;
+  display: flex;
+  position: relative;
+  right: 0em;
+  fill: #ffffff;
+}
+.navbar .nav-item {
+  margin: 0.8em 0em 0.8em 0em;
+}
+
+.recycled,
+.leaf {
+  transform-box: fill-box;
+  transform-origin: center;
 }/*# sourceMappingURL=main.css.map */

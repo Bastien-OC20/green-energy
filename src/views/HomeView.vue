@@ -1,5 +1,7 @@
 <template>
-  <div class="home">
+  <div
+    class="home col-lg-8 col-md-10 col-sm-12 d-flex flex-column align-items-center justify-content-center mx-auto"
+  >
     <IntroHomeView />
     <InfoEnergyProduct />
   </div>
@@ -19,6 +21,6 @@ export default {
   },
 };
 </script>
-<style lang="sass">
-@import "../assets/sass/main.scss"
+<style lang="scss">
+@import "../assets/sass/main.scss";
 </style>

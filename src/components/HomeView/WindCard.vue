@@ -1,10 +1,10 @@
 <template>
-  <div class="widget__card_wind m-1">
+  <div class="estimation__card__body_wind m-1">
     <p>
       la vitesse du vent :
       <span class="badge text-bg-info"> {{ wind }}km/h</span>
     </p>
-    <div class="widget__card_wind_indicator">
+    <div class="estimation__card__body_wind_indicator m-auto">
       <img
         :key="iconWind"
         class="iconProduct"
@@ -25,7 +25,7 @@
         {{ wind }}km/h
       </div>
     </div>
-    <div>
+    <div class="m-2">
       <p>
         La production moyenne d'électricité est de :<span class="badge text-bg-success"
           >{{ windElectricity }} kWh / jour
@@ -66,9 +66,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/sass/scss/utils/variables.scss";
+@import "../../assets/sass/main.scss";
 
-.widget__card_wind {
+.estimation__card_wind {
   background: $colorCadre2;
   background-clip: padding-box;
   position: relative;
@@ -100,18 +100,6 @@ export default {
       height: 100px;
       border: darken(#c6c798, 40%) 3px solid;
       box-shadow: inset 0px 4px 6px #ccc;
-      &-wind {
-        background-color: #178ae7;
-        position: absolute;
-        bottom: 0;
-        width: 40px;
-        height: 20%;
-        border-top: 6px solid #fff;
-        box-sizing: border-box;
-        animation: grow 1.5s ease-out forwards;
-        transform-origin: bottom;
-        box-shadow: inset 0px 4px 6px rgba(100, 100, 100, 0.6);
-      }
     }
     @keyframes grow {
       from {
