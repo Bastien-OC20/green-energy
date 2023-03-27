@@ -1,36 +1,38 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <LogoView @refresh-page="handleRefresh" />
-    <h1 class="navBar-title">Griin_Y !</h1>
-    <button
-      class="navbar-toggler"
-      :class="{ 'navbar--collapsed': isCollapsed }"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-md-center" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <router-link :to="'/'" class="routerlink mx-2 active" aria-current="page"
-            >Home</router-link
-          >
-        </li>
-        <li class="nav-item">
-          <router-link :to="'/solaire'" class="routerlink mx-2">Le solaire</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="'/eolien'" class="routerlink mx-2">L'éolien</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="'/about'" class="routerlink mx-2">About</router-link>
-        </li>
-      </ul>
+    <div class="container-fluid">
+      <LogoView @refresh-page="handleRefresh" />
+      <h1 class="navBar-title">Griin_Y !</h1>
+      <button
+        class="navbar-toggler"
+        :class="{ 'navbar--collapsed': isCollapsed }"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <router-link :to="'/'" class="routerlink mx-2 active" aria-current="page"
+              >Home</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link :to="'/solaire'" class="routerlink mx-2">Le solaire</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="'/eolien'" class="routerlink mx-2">L'éolien</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="'/about'" class="routerlink mx-2">About</router-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   <router-view />

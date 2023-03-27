@@ -3,12 +3,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    &_header {
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    &_header{
         width: 80%;
         display: flex;
         flex-direction: column;
-        
         background-clip: padding-box;
         border-radius: 15px;
         padding: 0.5em;

@@ -79,9 +79,6 @@ export default {
   name: "GreenEnergy",
   data() {
     return {
-      solaireSelected: require("../../assets/webp/solaire.webp"),
-      eolienSelected: require("../../assets/webp/eolien.webp"),
-      eauSelected: require("../../assets/webp/hydro.webp"),
       isSolaireClicked: "",
       isEolienClicked: "",
       isEauClicked: "",
@@ -102,6 +99,18 @@ export default {
       require: true,
     },
     blueStorm: {
+      type: String,
+      require: true,
+    },
+    solaireSelected:  {
+      type: String,
+      require: true,
+    },
+    eolienSelected:  {
+      type: String,
+      require: true,
+    },
+    eauSelected:  {
       type: String,
       require: true,
     },
